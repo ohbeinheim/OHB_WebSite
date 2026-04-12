@@ -1,8 +1,8 @@
-# 🎵 Orchestre d'Harmonie de Beinheim — Site Web
+#  Orchestre d'Harmonie de Beinheim — Site Web
 
 Site statique officiel de l'**Orchestre d'Harmonie de Beinheim (OHB)**, association loi 1901 fondée en 2001.
 
-🌐 **Site en ligne :** [orchestrebeinheim.com](https://orchestrebeinheim.com/)
+ **Site en ligne :** [orchestrebeinheim.com](https://orchestrebeinheim.com/)
 
 ---
 
