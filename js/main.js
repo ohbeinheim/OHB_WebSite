@@ -142,12 +142,14 @@ document.querySelectorAll('.tab-btn').forEach(btn => {
 });
 
 /* ─── 6. CONTACT FORM ────────────────────────────────────────── */
+const FORMSPREE_ENDPOINT = 'https://formspree.io/f/REMPLACER_ICI'; // ← coller l'endpoint Formspree de l'OHB
+ 
 const contactForm = document.getElementById('contactForm');
-contactForm?.addEventListener('submit', e => {
+contactForm?.addEventListener('submit', async e => {
   e.preventDefault();
   let valid = true;
-
-  // Validate each required field
+ 
+  // Validation
   contactForm.querySelectorAll('[required]').forEach(field => {
     const group = field.closest('.form-group');
     const empty = !field.value.trim();
@@ -159,19 +161,38 @@ contactForm?.addEventListener('submit', e => {
       group.classList.remove('has-error');
     }
   });
-
-  if (valid) {
-    const btn = contactForm.querySelector('button[type="submit"]');
-    btn.textContent = 'Envoi en cours…';
-    btn.disabled = true;
-    // Simulate async send (replace with real endpoint)
-    setTimeout(() => {
+ 
+  if (!valid) return;
+ 
+  const btn = contactForm.querySelector('button[type="submit"]');
+  const originalText = btn.textContent;
+  btn.textContent = 'Envoi en cours…';
+  btn.disabled = true;
+ 
+  try {
+    const response = await fetch(FORMSPREE_ENDPOINT, {
+      method: 'POST',
+      headers: { 'Accept': 'application/json' },
+      body: new FormData(contactForm)
+    });
+ 
+    if (response.ok) {
       contactForm.style.display = 'none';
       document.getElementById('formSuccess').style.display = 'block';
-    }, 1200);
+    } else {
+      const data = await response.json();
+      const msg = data?.errors?.map(e => e.message).join(', ') || 'Erreur lors de l\'envoi.';
+      alert('Erreur : ' + msg);
+      btn.textContent = originalText;
+      btn.disabled = false;
+    }
+  } catch (err) {
+    alert('Impossible d\'envoyer le message. Vérifiez votre connexion et réessayez.');
+    btn.textContent = originalText;
+    btn.disabled = false;
   }
 });
-
+ 
 // Remove error on input
 contactForm?.querySelectorAll('input, textarea').forEach(el => {
   el.addEventListener('input', () => el.closest('.form-group')?.classList.remove('has-error'));
