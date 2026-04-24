@@ -190,25 +190,98 @@
         </button>
       </div>
 
+
+
+
       <!-- ════ PROCHAINS CONCERTS ════ -->
       <div class="tab-content active" id="tab-upcoming">
 
         <article class="concert-full-card fade-up">
-          <div class="concert-full-card__img">
-            <img src="../photos/concerts/concert-02.jpg" alt="Concert de printemps 2025" loading="lazy" />
+          <!-- Affiche : toggle FR / DE -->
+          <div class="concert-full-card__img" style="position:relative;cursor:pointer" id="affiche25Wrapper">
+            <img id="affiche25Img"
+                 src="../photos/affiches_concerts/Concert_25_ans_fr.jpg"
+                 alt="Affiche Concert des 25 ans — version française"
+                 loading="lazy"
+                 style="width:100%;height:100%;object-fit:cover;object-position:top" />
+            <!-- Badge langue -->
+            <div id="affiche25Badge" style="
+              position:absolute;top:.8rem;right:.8rem;
+              display:flex;gap:.4rem;z-index:2">
+              <button onclick="switchAffiche('fr')" id="btn25fr"
+                style="background:rgba(255,255,255,.95);border:2px solid #fff;border-radius:4px;
+                       padding:.25rem .6rem;font-size:.7rem;font-weight:700;cursor:pointer;
+                       letter-spacing:.08em;color:#1a1a1a;transition:all .2s">
+                🇫🇷 FR
+              </button>
+              <button onclick="switchAffiche('de')" id="btn25de"
+                style="background:rgba(255,255,255,.5);border:2px solid rgba(255,255,255,.4);border-radius:4px;
+                       padding:.25rem .6rem;font-size:.7rem;font-weight:700;cursor:pointer;
+                       letter-spacing:.08em;color:#fff;transition:all .2s">
+                🇩🇪 DE
+              </button>
+            </div>
+            <!-- Hint téléchargement -->
+            <a id="affiche25DL"
+               href="../photos/affiches_concerts/Concert_25_ans_fr.jpg"
+               download="Affiche_Concert_25ans_OHB_FR.jpg"
+               style="position:absolute;bottom:.8rem;right:.8rem;
+                      background:rgba(0,0,0,.55);color:#fff;border:1px solid rgba(255,255,255,.3);
+                      border-radius:4px;padding:.3rem .7rem;font-size:.7rem;font-weight:700;
+                      letter-spacing:.08em;text-decoration:none;display:flex;align-items:center;gap:.4rem;
+                      backdrop-filter:blur(4px);transition:background .2s"
+               onmouseover="this.style.background='rgba(0,0,0,.8)'"
+               onmouseout="this.style.background='rgba(0,0,0,.55)'">
+              ↓ Télécharger
+            </a>
           </div>
           <div class="concert-full-card__body">
             <span class="concert-badge concert-badge--future">À venir</span>
-            <p class="label">Été 2026</p>
+            <p class="label">Printemps 2026</p>
             <h3>Concert des 25 ans</h3>
-            <p>Retrouvez l'OHB pour célébrer ses 25 ans dans un programme exceptionnel rempli de surprises.</p>
-            <div style="margin-top:1.5rem;display:flex;gap:1.5rem;flex-wrap:wrap;font-size:.85rem;color:var(--gold)">
-              <span>📅 6 Juin 2026</span>
-              <span>📍 Beinheim, Bas-Rhin</span>
-              <span>🎟️ Entrée libre</span>
+            <p>Rejoignez-nous pour célébrer les 25 ans de l'OHB ! Au programme : l'Orchestre à l'École, l'Orchestre Junior, puis l'Orchestre d'Harmonie de Beinheim dirigé par Emmanuel Lebedel.</p>
+            <div style="margin-top:1.5rem;display:flex;gap:1.2rem;flex-wrap:wrap;font-size:.85rem;color:var(--gold)">
+              <span>📅 Samedi 6 juin 2026 — 19h</span>
+              <span>📍 Salle polyvalente de Beinheim</span>
+              <span>🎟️ Entrée libre · Panier</span>
+              <span>🕐 Ouverture des portes 18h15</span>
+            </div>
+            <div style="margin-top:1.2rem;display:flex;gap:.8rem;flex-wrap:wrap">
+              <a href="../photos/affiches_concerts/Concert_25_ans_fr.jpg" download="Affiche_Concert_25ans_OHB_FR.jpg" class="btn" style="font-size:.75rem;padding:.5rem 1.2rem;display:inline-flex;align-items:center;gap:.4rem">
+                ↓ Affiche FRANÇAISE
+              </a>
+              <a href="../photos/affiches_concerts/Concert_25_ans_de.jpg" download="Affiche_Concert_25ans_OHB_DE.jpg" class="btn" style="font-size:.75rem;padding:.5rem 1.2rem;display:inline-flex;align-items:center;gap:.4rem">
+                ↓ Deutsches Plakat
+              </a>
             </div>
           </div>
         </article>
+
+        <script>
+          function switchAffiche(lang) {
+            const img  = document.getElementById('affiche25Img');
+            const dl   = document.getElementById('affiche25DL');
+            const btnFr = document.getElementById('btn25fr');
+            const btnDe = document.getElementById('btn25de');
+            const active   = 'background:rgba(255,255,255,.95);border:2px solid #fff;color:#1a1a1a;';
+            const inactive = 'background:rgba(255,255,255,.5);border:2px solid rgba(255,255,255,.4);color:#fff;';
+            if (lang === 'fr') {
+              img.src  = '../photos/affiches_concerts/Concert_25_ans_fr.jpg';
+              img.alt  = 'Affiche Concert des 25 ans — version française';
+              dl.href  = '../photos/affiches_concerts/Concert_25_ans_fr.jpg';
+              dl.download = 'Affiche_Concert_25ans_OHB_FR.jpg';
+              btnFr.style.cssText += active;
+              btnDe.style.cssText += inactive;
+            } else {
+              img.src  = '../photos/affiches_concerts/Concert_25_ans_de.jpg';
+              img.alt  = 'Affiche Concert des 25 ans — version allemande';
+              dl.href  = '../photos/affiches_concerts/Concert_25_ans_de.jpg';
+              dl.download = 'Affiche_Concert_25ans_OHB_DE.jpg';
+              btnDe.style.cssText += active;
+              btnFr.style.cssText += inactive;
+            }
+          }
+        </script>
 
         
 
