@@ -142,7 +142,7 @@ document.querySelectorAll('.tab-btn').forEach(btn => {
 });
 
 /* ─── 6. CONTACT FORM ────────────────────────────────────────── */
-const FORMSPREE_ENDPOINT = 'https://formspree.io/f/REMPLACER_ICI'; // ← coller l'endpoint Formspree de l'OHB
+const FORMSPREE_ENDPOINT = 'https://formspree.io/f/xyklaglp'
  
 const contactForm = document.getElementById('contactForm');
 contactForm?.addEventListener('submit', async e => {
