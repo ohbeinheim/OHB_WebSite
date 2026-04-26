@@ -269,3 +269,25 @@ document.querySelectorAll('.stagger-children > *').forEach((child, i) => {
     attachToggle();
   }
 })();
+
+/* ─── COMPTE À REBOURS ──────────────────────────────────────── */
+(function () {
+  const cible = new Date('2026-06-06T19:00:00');
+  function tick() {
+    const diff = cible - new Date();
+    if (diff <= 0) {
+      document.querySelector('[id^="cd-"]')?.closest('div[style]')?.remove();
+      return;
+    }
+    const j = Math.floor(diff / 86400000);
+    const h = Math.floor((diff % 86400000) / 3600000);
+    const m = Math.floor((diff % 3600000) / 60000);
+    const s = Math.floor((diff % 60000) / 1000);
+    document.getElementById('cd-jours').textContent    = j;
+    document.getElementById('cd-heures').textContent   = h;
+    document.getElementById('cd-minutes').textContent  = m;
+    document.getElementById('cd-secondes').textContent = s;
+  }
+  tick();
+  setInterval(tick, 1000);
+})();

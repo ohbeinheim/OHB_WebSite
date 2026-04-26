@@ -67,14 +67,51 @@
     <div class="hero__bg" role="img" aria-label="Orchestre en concert"></div>
     <div class="hero__overlay"></div>
     <div class="container">
-      <div class="hero__content">
+      <div class="hero__content" style="width:100%;max-width:100%;text-align:center;align-items:center">
         <p class="hero__tag">Depuis 2001 · Beinheim, Alsace</p>
         <h1>Orchestre d'Harmonie<br>de Beinheim</h1>
         <p class="hero__sub">Aimer. Jouer. Vibrer.</p>
-        <div class="hero__ctas">
+        <div class="hero__ctas" style="justify-content:center">
           <a href="concerts.html" class="btn btn--filled">Prochains concerts</a>
           <a href="a-propos.html" class="btn">Découvrir l'OHB</a>
         </div>
+
+        <div id="countdown-hero" style="margin-top:2.5rem;text-align:center">
+          <p style="font-size:1.5rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;
+                     color:#F4A7B9;margin-bottom:1rem">
+             Concert des 25 ans — 6 juin 2026 à 19h !
+          </p>
+          <div style="display:flex;gap:1rem;flex-wrap:wrap;justify-content:center">
+            <div style="background:rgba(255,255,255,.12);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.2);
+                        border-radius:8px;padding:.8rem 1.2rem;min-width:70px;text-align:center">
+              <div id="cd-jours" style="font-family:var(--ff-display);font-size:2.2rem;font-weight:700;
+                                        color:#fff;line-height:1">0</div>
+              <div style="font-size:.62rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;
+                          color:rgba(255,255,255,.55);margin-top:.3rem">Jours</div>
+            </div>
+            <div style="background:rgba(255,255,255,.12);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.2);
+                        border-radius:8px;padding:.8rem 1.2rem;min-width:70px;text-align:center">
+              <div id="cd-heures" style="font-family:var(--ff-display);font-size:2.2rem;font-weight:700;
+                                         color:#fff;line-height:1">0</div>
+              <div style="font-size:.62rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;
+                          color:rgba(255,255,255,.55);margin-top:.3rem">Heures</div>
+            </div>
+            <div style="background:rgba(255,255,255,.12);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.2);
+                        border-radius:8px;padding:.8rem 1.2rem;min-width:70px;text-align:center">
+              <div id="cd-minutes" style="font-family:var(--ff-display);font-size:2.2rem;font-weight:700;
+                                          color:#fff;line-height:1">0</div>
+              <div style="font-size:.62rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;
+                          color:rgba(255,255,255,.55);margin-top:.3rem">Minutes</div>
+            </div>
+            <div style="background:rgba(255,255,255,.12);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.2);
+                        border-radius:8px;padding:.8rem 1.2rem;min-width:70px;text-align:center">
+              <div id="cd-secondes" style="font-family:var(--ff-display);font-size:2.2rem;font-weight:700;
+                                           color:#fff;line-height:1">0</div>
+              <div style="font-size:.62rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;
+                          color:rgba(255,255,255,.55);margin-top:.3rem">Secondes</div>
+            </div>
+        </div>
+
       </div>
     </div>
     <div class="hero__scroll" aria-hidden="true">
