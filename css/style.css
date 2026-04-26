@@ -305,7 +305,7 @@ h4 { font-size: 1.2rem; }
 .hero__bg {
   position: absolute;
   inset: 0;
-  background-image: url('https://static.wixstatic.com/media/7abdd3_639256011caf413188eb936fc9fd2e39~mv2.jpeg/v1/fill/w_1920,h_1080,al_c,q_90,enc_avif,quality_auto/7abdd3_639256011caf413188eb936fc9fd2e39~mv2.jpeg');
+  background-image: url('../photos/concerts/concert-03.jpg');
   background-size: cover;
   background-position: center top;
   filter: brightness(.45);
