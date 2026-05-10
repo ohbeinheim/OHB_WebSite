@@ -1331,3 +1331,9 @@ body, .nav, .nav__mobile, .footer, .concert-card, .concert-full-card,
     grid-template-columns: 1fr;
   }
 }
+
+.oae-hero-block__img--portrait {
+  aspect-ratio: 2/3;
+  height: auto;
+  max-width: unset;
+}
