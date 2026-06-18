@@ -35,7 +35,6 @@
       box-shadow: var(--shadow-gold);
     }
 
-    /* Wrapper 16:9 */
     .video-card__embed {
       position: relative;
       width: 100%;
@@ -57,7 +56,6 @@
       opacity: .7;
     }
 
-    /* Bouton play */
     .video-card__play {
       position: absolute;
       top: 50%;
@@ -80,7 +78,6 @@
     }
     .video-card__play svg { margin-left: 4px; }
 
-    /* Iframe injectée au clic */
     .video-card__embed iframe {
       position: absolute;
       inset: 0;
@@ -115,6 +112,20 @@
 
     @media (max-width: 640px) {
       .videos-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ─── Galerie "Revivez le concert" ─────────────────── */
+    .retro-gallery {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-auto-rows: 220px;
+      gap: 6px;
+      margin-top: 2rem;
+    }
+    .retro-gallery .gallery-item:nth-child(5n+1) { grid-row: span 2; grid-column: span 2; }
+    @media (max-width: 768px) {
+      .retro-gallery { grid-template-columns: repeat(2, 1fr); }
+      .retro-gallery .gallery-item:nth-child(5n+1) { grid-column: span 2; grid-row: span 1; }
     }
   </style>
 </head>
@@ -182,6 +193,9 @@
       <div class="concerts-tabs fade-up">
         <button class="tab-btn active" data-tab="tab-upcoming">Prochains concerts</button>
         <button class="tab-btn" data-tab="tab-past">Concerts passés</button>
+        <button class="tab-btn" data-tab="tab-retro25" style="display:inline-flex;align-items:center;gap:6px">
+          🎉 Revivez les 25 ans
+        </button>
         <button class="tab-btn" data-tab="tab-excerpts" style="display:inline-flex;align-items:center;gap:6px">
           <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="opacity:.85">
             <path d="M23.5 6.2a3.01 3.01 0 00-2.12-2.13C19.54 3.6 12 3.6 12 3.6s-7.54 0-9.38.47A3.01 3.01 0 00.5 6.2 31.5 31.5 0 000 12a31.5 31.5 0 00.5 5.8 3.01 3.01 0 002.12 2.13C4.46 20.4 12 20.4 12 20.4s7.54 0 9.38-.47a3.01 3.01 0 002.12-2.13A31.5 31.5 0 0024 12a31.5 31.5 0 00-.5-5.8zM9.75 15.5V8.5l6.25 3.5-6.25 3.5z"/>
@@ -190,108 +204,13 @@
         </button>
       </div>
 
-
-
-
       <!-- ════ PROCHAINS CONCERTS ════ -->
       <div class="tab-content active" id="tab-upcoming">
 
-        <article class="concert-full-card fade-up">
-          <!-- Affiche : toggle FR / DE -->
-          <div class="concert-full-card__img" style="position:relative;cursor:pointer" id="affiche25Wrapper">
-            <img id="affiche25Img"
-                 src="../photos/affiches_concerts/Concert_25_ans_fr.jpg"
-                 alt="Affiche Concert des 25 ans — version française"
-                 loading="lazy"
-                 style="width:100%;height:100%;object-fit:cover;object-position:top" />
-            <!-- Badge langue -->
-            <div id="affiche25Badge" style="
-              position:absolute;top:.8rem;right:.8rem;
-              display:flex;gap:.4rem;z-index:2">
-              <button onclick="switchAffiche('fr')" id="btn25fr"
-                style="background:rgba(255,255,255,.95);border:2px solid #fff;border-radius:4px;
-                       padding:.25rem .6rem;font-size:.7rem;font-weight:700;cursor:pointer;
-                       letter-spacing:.08em;color:#1a1a1a;transition:all .2s">
-                🇫🇷 FR
-              </button>
-              <button onclick="switchAffiche('de')" id="btn25de"
-                style="background:rgba(255,255,255,.5);border:2px solid rgba(255,255,255,.4);border-radius:4px;
-                       padding:.25rem .6rem;font-size:.7rem;font-weight:700;cursor:pointer;
-                       letter-spacing:.08em;color:#fff;transition:all .2s">
-                🇩🇪 DE
-              </button>
-            </div>
-            <!-- Hint téléchargement -->
-            <a id="affiche25DL"
-               href="../photos/affiches_concerts/Concert_25_ans_fr.jpg"
-               download="Affiche_Concert_25ans_OHB_FR.jpg"
-               style="position:absolute;bottom:.8rem;right:.8rem;
-                      background:rgba(0,0,0,.55);color:#fff;border:1px solid rgba(255,255,255,.3);
-                      border-radius:4px;padding:.3rem .7rem;font-size:.7rem;font-weight:700;
-                      letter-spacing:.08em;text-decoration:none;display:flex;align-items:center;gap:.4rem;
-                      backdrop-filter:blur(4px);transition:background .2s"
-               onmouseover="this.style.background='rgba(0,0,0,.8)'"
-               onmouseout="this.style.background='rgba(0,0,0,.55)'">
-              ↓ Télécharger
-            </a>
-          </div>
-          <div class="concert-full-card__body">
-            <span class="concert-badge concert-badge--future">À venir</span>
-            <p class="label">Printemps 2026</p>
-            <h3>Concert des 25 ans</h3>
-            <p>Rejoignez-nous pour célébrer les 25 ans de l'OHB ! Au programme : l'Orchestre à l'École, l'Orchestre Junior, puis l'Orchestre d'Harmonie de Beinheim dirigé par Emmanuel Lebedel.</p>
-            <div style="margin-top:1.5rem;display:flex;gap:1.2rem;flex-wrap:wrap;font-size:.85rem;color:var(--gold)">
-              <span>📅 Samedi 6 juin 2026 — 19h</span>
-              <span>📍 Salle polyvalente de Beinheim</span>
-              <span>🎟️ Entrée libre · Panier</span>
-              <span>🕐 Ouverture des portes 18h15</span>
-            </div>
-            <div style="margin-top:1.2rem;display:flex;gap:.8rem;flex-wrap:wrap">
-              <a href="../photos/affiches_concerts/Concert_25_ans_fr.jpg" download="Affiche_Concert_25ans_OHB_FR.jpg" class="btn" style="font-size:.75rem;padding:.5rem 1.2rem;display:inline-flex;align-items:center;gap:.4rem">
-                ↓ Affiche FRANÇAISE
-              </a>
-              <a href="../photos/affiches_concerts/Concert_25_ans_de.jpg" download="Affiche_Concert_25ans_OHB_DE.jpg" class="btn" style="font-size:.75rem;padding:.5rem 1.2rem;display:inline-flex;align-items:center;gap:.4rem">
-                ↓ Deutsches Plakat
-              </a>
-              <a href="https://www.google.com/calendar/render?action=TEMPLATE&text=Concert+des+25+ans+OHB&dates=20260606T180000Z/20260606T200000Z&details=Orchestre+d%27Harmonie+de+Beinheim+-+Concert+des+25+ans&location=Salle+polyvalente+Sicurani,+1+Rue+du+Foyer,+67930+Beinheim" 
-                target="_blank" rel="noopener"
-                class="btn" style="font-size:.75rem;padding:.5rem 1.2rem;display:inline-flex;align-items:center;gap:.4rem">
-                📅 Ajouter au calendrier
-              </a>
-            </div>
-          </div>
-        </article>
-
-        <script>
-          function switchAffiche(lang) {
-            const img  = document.getElementById('affiche25Img');
-            const dl   = document.getElementById('affiche25DL');
-            const btnFr = document.getElementById('btn25fr');
-            const btnDe = document.getElementById('btn25de');
-            const active   = 'background:rgba(255,255,255,.95);border:2px solid #fff;color:#1a1a1a;';
-            const inactive = 'background:rgba(255,255,255,.5);border:2px solid rgba(255,255,255,.4);color:#fff;';
-            if (lang === 'fr') {
-              img.src  = '../photos/affiches_concerts/Concert_25_ans_fr.jpg';
-              img.alt  = 'Affiche Concert des 25 ans — version française';
-              dl.href  = '../photos/affiches_concerts/Concert_25_ans_fr.jpg';
-              dl.download = 'Affiche_Concert_25ans_OHB_FR.jpg';
-              btnFr.style.cssText += active;
-              btnDe.style.cssText += inactive;
-            } else {
-              img.src  = '../photos/affiches_concerts/Concert_25_ans_de.jpg';
-              img.alt  = 'Affiche Concert des 25 ans — version allemande';
-              dl.href  = '../photos/affiches_concerts/Concert_25_ans_de.jpg';
-              dl.download = 'Affiche_Concert_25ans_OHB_DE.jpg';
-              btnDe.style.cssText += active;
-              btnFr.style.cssText += inactive;
-            }
-          }
-        </script>
-
-        
-
-        <div class="fade-up" style="background:var(--dark-2);border:1px solid var(--dark-3);border-radius:4px;padding:2rem;text-align:center;margin-top:1rem">
-          <p class="label">Les dates précises seront communiquées prochainement. Suivez-nous sur les réseaux sociaux pour ne rien manquer.</p><br>
+        <div class="fade-up" style="background:var(--dark-2);border:1px solid var(--dark-3);border-radius:4px;padding:3rem 2rem;text-align:center">
+          <p class="label" style="margin-bottom:1rem">Aucune date confirmée pour le moment</p>
+          <h3 style="color:var(--white);margin-bottom:1rem">Les prochaines dates seront communiquées prochainement</h3>
+          <p style="color:rgba(255,255,255,.55);max-width:500px;margin:0 auto 1.5rem">Suivez-nous sur les réseaux sociaux ou inscrivez-vous pour être informé dès qu'un nouveau concert est annoncé.</p>
           <a href="contact.html" class="btn">Être informé des prochains concerts</a>
         </div>
 
@@ -300,6 +219,25 @@
       <!-- ════ CONCERTS PASSÉS ════ -->
       <div class="tab-content" id="tab-past">
 
+        <!-- Concert des 25 ans — désormais passé -->
+        <article class="concert-full-card fade-up">
+          <div class="concert-full-card__img">
+            <img src="../photos/affiches_concerts/Concert_25_ans_fr.jpg" alt="Affiche Concert des 25 ans" loading="lazy" style="object-position:top" />
+          </div>
+          <div class="concert-full-card__body">
+            <span class="concert-badge concert-badge--past">Passé</span>
+            <p class="label">6 Juin 2026</p>
+            <h3>Concert des 25 ans</h3>
+            <p>L'OHB a célébré ses 25 ans en grande pompe ! Au programme : l'Orchestre à l'École, l'Orchestre Junior, puis l'Orchestre d'Harmonie de Beinheim dirigé par Emmanuel Lebedel.</p>
+            <div style="margin-top:1.5rem;display:flex;gap:1.2rem;flex-wrap:wrap;font-size:.85rem;color:var(--gold)">
+              <span>📅 Samedi 6 juin 2026</span>
+              <span>📍 Salle polyvalente de Beinheim</span>
+            </div>
+            <div style="margin-top:1.2rem">
+              <button class="btn btn--filled" onclick="document.querySelector('[data-tab=tab-retro25]').click()">🎉 Revivez le concert</button>
+            </div>
+          </div>
+        </article>
 
         <article class="concert-full-card fade-up">
           <div class="concert-full-card__img">
@@ -400,6 +338,57 @@
         </article>
 
       </div>
+
+      <!-- ════ REVIVEZ LE CONCERT DES 25 ANS ════ -->
+      <div class="tab-content" id="tab-retro25">
+
+        <div class="fade-up" style="text-align:center;max-width:700px;margin:0 auto 2.5rem">
+          <p class="label" style="margin-bottom:.6rem">6 Juin 2026 — Salle polyvalente de Beinheim</p>
+          <h2 style="color:var(--white);font-size:clamp(1.6rem,3.5vw,2.4rem);margin-bottom:1rem">Revivez le concert des 25 ans 🎉</h2>
+          <div class="divider divider--center"></div>
+          <p style="color:rgba(255,255,255,.65);line-height:1.8">
+            Merci à toutes et à tous d'avoir été présents pour célébrer un quart de siècle de musique avec nous !
+            Revivez cette soirée mémorable à travers les photos et vidéos de l'événement.
+          </p>
+        </div>
+
+        <!-- GALERIE PHOTOS -->
+        <div class="retro-gallery" role="list">
+
+          <!-- Photos du concert des 25 ans --> 
+          <div class="gallery-item" role="listitem">
+            <img src="../photos/concerts/25_ans/eupho.jpg" alt="Concert des 25 ans" loading="lazy" />
+            <div class="gallery-item__overlay" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><path stroke-linecap="round" d="M11 8v6M8 11h6"/></svg></div>
+          </div>
+          <div class="gallery-item" role="listitem">
+            <img src="../photos/concerts/25_ans/jeune.jpg" alt="Concert des 25 ans" loading="lazy" />
+            <div class="gallery-item__overlay" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><path stroke-linecap="round" d="M11 8v6M8 11h6"/></svg></div>
+          </div>
+          <div class="gallery-item" role="listitem">
+            <img src="../photos/concerts/25_ans/flute.jpg" alt="Concert des 25 ans" loading="lazy" />
+            <div class="gallery-item__overlay" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><path stroke-linecap="round" d="M11 8v6M8 11h6"/></svg></div>
+          </div>
+          <div class="gallery-item" role="listitem">
+            <img src="../photos/concerts/25_ans/clarinette.jpg" alt="Concert des 25 ans" loading="lazy" />
+            <div class="gallery-item__overlay" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><path stroke-linecap="round" d="M11 8v6M8 11h6"/></svg></div>
+          </div>
+          <div class="gallery-item" role="listitem">
+            <img src="../photos/concerts/25_ans/cor.jpg" alt="Concert des 25 ans" loading="lazy" />
+            <div class="gallery-item__overlay" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><path stroke-linecap="round" d="M11 8v6M8 11h6"/></svg></div>
+          </div>
+          <div class="gallery-item" role="listitem">
+            <img src="../photos/concerts/25_ans/groupe.jpg" alt="Concert des 25 ans" loading="lazy" />
+            <div class="gallery-item__overlay" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><path stroke-linecap="round" d="M11 8v6M8 11h6"/></svg></div>
+          </div>
+
+        </div><!-- /.retro-gallery -->
+
+        <!-- Lien vers galerie complète -->
+        <div class="fade-up" style="text-align:center;margin-top:2.5rem">
+          <a href="galerie.html" class="btn">Voir toutes les photos dans la galerie</a>
+        </div>
+
+      </div><!-- /#tab-retro25 -->
 
       <!-- ════ EXTRAITS VIDÉO ════ -->
       <div class="tab-content" id="tab-excerpts">
@@ -611,7 +600,6 @@
       iframe.allowFullscreen = true;
       iframe.title = card.querySelector('h3')?.textContent || 'Vidéo OHB';
 
-      // Referrer OK mais pas obligatoire avec youtube.com
       iframe.setAttribute('referrerpolicy', 'strict-origin-when-cross-origin');
 
       wrapper.innerHTML = '';
