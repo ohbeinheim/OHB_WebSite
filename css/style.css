@@ -1351,3 +1351,34 @@ body, .nav, .nav__mobile, .footer, .concert-card, .concert-full-card,
     font-size: .68rem;
   }
 }
+
+/* ─── BOUTON RETOUR EN HAUT ──────────────────────────────────── */
+.back-to-top {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  width: 48px;
+  height: 48px;
+  background: var(--gold);
+  color: var(--noir);
+  border: none;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: opacity .3s ease, transform .3s ease, visibility .3s;
+  box-shadow: var(--shadow-lg);
+  z-index: 900;
+}
+.back-to-top.visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+.back-to-top:hover {
+  background: var(--gold-light);
+}
