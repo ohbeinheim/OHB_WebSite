@@ -1339,3 +1339,15 @@ body, .nav, .nav__mobile, .footer, .concert-card, .concert-full-card,
   height: auto;
   max-width: unset;
 }
+
+
+@media (max-width: 768px) {
+  .concerts-tabs {
+    flex-wrap: wrap;
+    gap: .3rem;
+  }
+  .tab-btn {
+    padding: .5rem .8rem;
+    font-size: .68rem;
+  }
+}
