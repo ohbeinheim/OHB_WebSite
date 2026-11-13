@@ -56,17 +56,7 @@ OHB_WebSite/
 
 - HTML5 / CSS3 / JavaScript vanilla — aucune dépendance externe
 - Polices : [Cormorant Garamond](https://fonts.google.com/specimen/Cormorant+Garamond) + [Lato](https://fonts.google.com/specimen/Lato) (Google Fonts)
-- Hébergement : GitHub Pages
-
----
-
-## Contenu à compléter
-
-- [ ] Fiches bénévoles (noms, rôles, photos)
-- [ ] Infos pratiques OJ (âges, fréquence répétitions)
-- [ ] PDF dossier de presse complet
-- [ ] Photos Messti / Loto dans la galerie
-- [ ] Connecter le formulaire de contact (ex : [Formspree](https://formspree.io))
+- Hébergement : GitHub Pages + Nom de domaine
 
 ---
 

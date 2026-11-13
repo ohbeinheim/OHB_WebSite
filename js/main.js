@@ -272,7 +272,7 @@ document.querySelectorAll('.stagger-children > *').forEach((child, i) => {
 
 /* ─── COMPTE À REBOURS ──────────────────────────────────────── */
 (function () {
-  const cible = new Date('2026-06-06T19:00:00');
+  const cible = new Date('2027-01-17T19:00:00');
   function tick() {
     const diff = cible - new Date();
     if (diff <= 0) {
